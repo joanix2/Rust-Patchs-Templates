@@ -1,0 +1,17 @@
+{
+  "doc": "A person with name and age",
+  "struct_name": "Person",
+  "derives": ["Debug", "Clone", "PartialEq"],
+  "fields": [
+    {
+      "name": "name",
+      "type": "String",
+      "doc": "The person's name"
+    },
+    {
+      "name": "age",
+      "type": "u32",
+      "doc": "The person's age in years"
+    }
+  ]
+}

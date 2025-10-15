@@ -1,0 +1,21 @@
+//! A person with name and age
+
+#[derive(Debug, Clone, PartialEq)]
+pub struct Person {
+    /// The person's name
+    pub name: String,
+    /// The person's age in years
+    pub age: u32,
+}
+
+impl Person {
+    /// Create a new Person
+    pub fn new(name: String, age: u32) -> Self {
+        Self { name, age }
+    }
+}
+
+/// Validate age is in reasonable range
+fn validate_age(age: u32) -> bool {
+    age > 0 && age < 150
+}

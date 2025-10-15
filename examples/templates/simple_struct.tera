@@ -1,0 +1,22 @@
+//! {{ doc }}
+
+{% if derives %}
+#[derive({{ derives | join(sep=", ") }})]
+{% endif %}
+pub struct {{ struct_name }} {
+    {% for field in fields %}
+    /// {{ field.doc }}
+    pub {{ field.name }}: {{ field.type }},
+    {% endfor %}
+}
+
+impl {{ struct_name }} {
+    /// Create a new {{ struct_name }}
+    pub fn new({% for field in fields %}{{ field.name }}: {{ field.type }}{% if not loop.last %}, {% endif %}{% endfor %}) -> Self {
+        Self {
+            {% for field in fields %}
+            {{ field.name }},
+            {% endfor %}
+        }
+    }
+}
