@@ -1,0 +1,27 @@
+{
+  "doc": "User authentication API handler",
+  "handler_name": "authenticate_user",
+  "handler_doc": "Authenticate a user with credentials",
+  "request_name": "AuthRequest",
+  "response_name": "AuthResponse",
+  "request_fields": [
+    {
+      "name": "username",
+      "type": "String"
+    },
+    {
+      "name": "password",
+      "type": "String"
+    }
+  ],
+  "response_fields": [
+    {
+      "name": "success",
+      "type": "bool"
+    },
+    {
+      "name": "token",
+      "type": "Option<String>"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+//! {{ doc }}
+
+use anyhow::Result;
+use serde::{Deserialize, Serialize};
+
+/// Request payload for {{ handler_name }}
+#[derive(Debug, Deserialize)]
+pub struct {{ request_name }} {
+    {% for field in request_fields %}
+    pub {{ field.name }}: {{ field.type }},
+    {% endfor %}
+}
+
+/// Response payload for {{ handler_name }}
+#[derive(Debug, Serialize)]
+pub struct {{ response_name }} {
+    {% for field in response_fields %}
+    pub {{ field.name }}: {{ field.type }},
+    {% endfor %}
+}
+
+/// {{ handler_doc }}
+pub async fn {{ handler_name }}(req: {{ request_name }}) -> Result<{{ response_name }}> {
+    // TODO: Implement handler logic
+    todo!("Implement {{ handler_name }}")
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[tokio::test]
+    async fn test_{{ handler_name }}() {
+        // TODO: Add tests
+    }
+}
