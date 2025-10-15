@@ -2,6 +2,13 @@
 name = "rust-patchs-templates"
 version = "0.1.0"
 edition = "2021"
+authors = ["Contributors"]
+description = "Rust code generator with AST-based intelligent merging using Patch Theory"
+readme = "README.md"
+repository = "https://github.com/joanix2/Rust-Patchs-Templates"
+license = "MIT"
+keywords = ["codegen", "template", "ast", "patch", "merge"]
+categories = ["development-tools", "template-engine"]
 
 [dependencies]
 syn = { version = "2.0", features = ["full", "extra-traits", "visit", "visit-mut"] }

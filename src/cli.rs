@@ -8,7 +8,13 @@ use std::path::PathBuf;
 /// Rust code generator with AST-based intelligent merging
 #[derive(Parser, Debug)]
 #[command(name = "rust-patchs-templates")]
-#[command(author, version, about, long_about = None)]
+#[command(version)]
+#[command(about = "Generate Rust code from Tera templates with intelligent AST-based merging")]
+#[command(
+    long_about = "A tool that generates Rust code from Tera templates and intelligently merges \
+changes with existing files using AST-based Patch Theory. Preserves manual edits while applying \
+template updates. No text markers - pure structural diffing."
+)]
 pub struct Cli {
     #[command(subcommand)]
     pub command: Commands,
@@ -21,49 +27,49 @@ pub enum Commands {
         /// Path to template file or directory
         #[arg(short, long)]
         template: PathBuf,
-        
+
         /// Path to context data file (JSON)
         #[arg(short, long)]
         context: PathBuf,
-        
+
         /// Output file path
         #[arg(short, long)]
         output: PathBuf,
-        
+
         /// Merge strategy: template, manual, or fail
         #[arg(short, long, default_value = "manual")]
         strategy: String,
     },
-    
+
     /// Show diff between generated code and existing file
     Diff {
         /// Path to template file or directory
         #[arg(short, long)]
         template: PathBuf,
-        
+
         /// Path to context data file (JSON)
         #[arg(short, long)]
         context: PathBuf,
-        
+
         /// Existing file to compare against
         #[arg(short, long)]
         existing: PathBuf,
-        
+
         /// Show detailed AST-level diff
         #[arg(short, long, default_value = "false")]
         verbose: bool,
     },
-    
+
     /// Check for conflicts without applying changes
     Check {
         /// Path to template file or directory
         #[arg(short, long)]
         template: PathBuf,
-        
+
         /// Path to context data file (JSON)
         #[arg(short, long)]
         context: PathBuf,
-        
+
         /// Existing file to check
         #[arg(short, long)]
         existing: PathBuf,
